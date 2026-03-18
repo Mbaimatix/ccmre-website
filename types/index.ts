@@ -29,6 +29,7 @@ export interface NewsItem {
   excerpt: string;
   image: string;
   category: string;
+  body?: string[];
 }
 
 export interface Stat {

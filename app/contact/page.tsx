@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { Mail, Phone, MapPin, Send, CheckCircle } from "lucide-react";
 import { ORG } from "@/lib/constants";
 
@@ -27,7 +27,7 @@ export default function ContactPage() {
     return e;
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (form.website) return; // honeypot
     const errs = validate();
@@ -96,22 +96,18 @@ export default function ContactPage() {
               </ul>
             </div>
 
-            {/* Map placeholder */}
-            <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100 bg-gray-100 flex items-center justify-center" style={{ height: "220px" }}>
-              <div className="text-center p-6">
-                <MapPin size={32} className="mx-auto mb-2" style={{ color: "var(--color-primary)" }} aria-hidden="true" />
-                <p className="text-sm font-medium" style={{ color: "var(--color-primary)", fontFamily: "'Inter', system-ui, sans-serif" }}>St. Paul&apos;s University, Limuru</p>
-                <p className="text-xs text-gray-500 mt-1" style={{ fontFamily: "'Inter', system-ui, sans-serif" }}>-1.1077, 36.6553</p>
-                <a
-                  href="https://maps.google.com/?q=St+Paul's+University+Limuru+Kenya"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block mt-3 text-xs font-semibold underline"
-                  style={{ color: "var(--color-primary)" }}
-                >
-                  Open in Google Maps
-                </a>
-              </div>
+            {/* Map */}
+            <div className="rounded-3xl overflow-hidden shadow-sm border border-gray-100" style={{ height: "220px" }}>
+              <iframe
+                src="https://maps.google.com/maps?q=St+Paul%27s+University+Limuru+Kenya&z=14&output=embed"
+                width="100%"
+                height="220"
+                style={{ border: 0, display: "block" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="St. Paul's University, Limuru — map location"
+              />
             </div>
           </div>
 

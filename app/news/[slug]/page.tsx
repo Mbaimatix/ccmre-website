@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowLeft, Calendar, Tag } from "lucide-react";
+import { ArrowLeft, Calendar } from "lucide-react";
 import { NEWS_ITEMS } from "@/lib/constants";
 import { notFound } from "next/navigation";
 
@@ -56,14 +56,26 @@ export default async function NewsArticlePage({ params }: Props) {
           <Image src={item.image} alt={item.title} fill className="object-cover" sizes="(max-width: 896px) 100vw, 896px" priority />
         </div>
         <div className="bg-white rounded-3xl p-8 lg:p-12 shadow-sm border border-gray-100">
-          <p className="text-base leading-relaxed" style={{ color: "var(--color-text)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1.05rem" }}>
-            {item.excerpt}
-          </p>
-          <p className="mt-6 text-sm italic" style={{ color: "#9CA3AF", fontFamily: "'Inter', system-ui, sans-serif" }}>
-            Full article content will be updated as new details become available. Contact us at{" "}
-            <a href="mailto:skiilu@spu.ac.ke" className="underline hover:no-underline" style={{ color: "var(--color-primary)" }}>skiilu@spu.ac.ke</a>{" "}
-            for media enquiries.
-          </p>
+          {item.body && item.body.length > 0 ? (
+            <div className="space-y-5">
+              {item.body.map((paragraph, i) => (
+                <p key={i} className="leading-relaxed" style={{ color: "var(--color-text)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1.05rem" }}>
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+          ) : (
+            <>
+              <p className="text-base leading-relaxed" style={{ color: "var(--color-text)", fontFamily: "'Inter', system-ui, sans-serif", fontSize: "1.05rem" }}>
+                {item.excerpt}
+              </p>
+              <p className="mt-6 text-sm italic" style={{ color: "#9CA3AF", fontFamily: "'Inter', system-ui, sans-serif" }}>
+                Full article content will be updated as new details become available. Contact us at{" "}
+                <a href="mailto:skiilu@spu.ac.ke" className="underline hover:no-underline" style={{ color: "var(--color-primary)" }}>skiilu@spu.ac.ke</a>{" "}
+                for media enquiries.
+              </p>
+            </>
+          )}
         </div>
 
         <div className="mt-10 flex justify-between items-center">

@@ -3,14 +3,20 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, ChevronDown } from "lucide-react";
+import { usePathname } from "next/navigation";
 import { NAV_LINKS } from "@/lib/constants";
 import { cn } from "@/lib/utils";
 
 export default function Header() {
+  const pathname = usePathname();
+  const isHomepage = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
+
+  // On inner pages, always treat as scrolled (solid header)
+  const solidHeader = !isHomepage || scrolled;
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 20);
@@ -29,7 +35,7 @@ export default function Header() {
     <header
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-        scrolled
+        solidHeader
           ? "bg-white shadow-md py-2"
           : "bg-transparent py-4"
       )}
@@ -42,7 +48,7 @@ export default function Header() {
             className="font-bold text-xl tracking-tight transition-colors"
             style={{
               fontFamily: "'Playfair Display', Georgia, serif",
-              color: scrolled ? "var(--color-primary)" : "white",
+              color: solidHeader ? "var(--color-primary)" : "white",
             }}
           >
             CCMRE / CCISA
@@ -51,7 +57,7 @@ export default function Header() {
             className="text-xs font-medium transition-colors"
             style={{
               fontFamily: "'Inter', system-ui, sans-serif",
-              color: scrolled ? "var(--color-secondary)" : "rgba(201,162,39,0.9)",
+              color: solidHeader ? "var(--color-secondary)" : "rgba(201,162,39,0.9)",
             }}
           >
             A St. Paul&apos;s University Initiative
@@ -71,7 +77,7 @@ export default function Header() {
                 <button
                   className={cn(
                     "flex items-center gap-1 px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                    scrolled
+                    solidHeader
                       ? "text-gray-700 hover:text-[var(--color-primary)]"
                       : "text-white/90 hover:text-white"
                   )}
@@ -92,7 +98,7 @@ export default function Header() {
                   href={item.href}
                   className={cn(
                     "px-3 py-2 rounded-md text-sm font-medium transition-colors",
-                    scrolled
+                    solidHeader
                       ? "text-gray-700 hover:text-[var(--color-primary)]"
                       : "text-white/90 hover:text-white"
                   )}
@@ -138,7 +144,7 @@ export default function Header() {
         {/* Mobile hamburger */}
         <button
           className="lg:hidden p-2 rounded-md transition-colors"
-          style={{ color: scrolled ? "var(--color-primary)" : "white" }}
+          style={{ color: solidHeader ? "var(--color-primary)" : "white" }}
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}

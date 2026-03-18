@@ -88,7 +88,7 @@ export default function OurStoryPage() {
                 Christians and Muslims in Eastleigh and the broader Kamukunji area.
               </p>
               <p>
-                When the Dusit DusitD2 Hotel attack occurred, CCMRE was already embedded deep
+                When the DusitD2 Hotel attack occurred, CCMRE was already embedded deep
                 enough in the community to facilitate open healing dialogue between Christians
                 and Muslims — at a time when the nation needed it most. This moment crystallised
                 what years of quiet groundwork had built.

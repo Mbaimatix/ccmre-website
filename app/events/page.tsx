@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, MapPin, Clock, ArrowRight } from "lucide-react";
-import { ORG } from "@/lib/constants";
+
 
 export const metadata: Metadata = {
   title: "Events",
@@ -36,7 +36,7 @@ const upcomingEvents = [
   },
   {
     title: "ICMR Interreligious Conference",
-    date: "Annual — Date TBC",
+    date: "Annual — typically Q3/Q4 (date to be confirmed)",
     time: "Full Day",
     location: "St. Paul's University, Limuru",
     type: "Conference",

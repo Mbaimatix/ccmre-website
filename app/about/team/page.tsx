@@ -133,44 +133,23 @@ export default function TeamPage() {
         </div>
       </section>
 
-      {/* Placeholder staff */}
-      <section
-        className="py-16 bg-white"
-        aria-labelledby="staff-heading"
-      >
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+      {/* Team note */}
+      <section className="py-16 bg-white" aria-labelledby="staff-heading">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2
             id="staff-heading"
             className="font-bold mb-4"
             style={{ fontFamily: "'Playfair Display', Georgia, serif", fontSize: "clamp(1.5rem, 3vw, 2.25rem)", color: "var(--color-primary)" }}
           >
-            Advisory Board &amp; Key Staff
+            Our Wider Community
           </h2>
-          <p className="text-base mb-10" style={{ color: "#6B7280", fontFamily: "'Inter', system-ui, sans-serif" }}>
-            CCMRE and CCISA work with a dedicated team of academics, community leaders, and
-            interfaith practitioners from across Kenya and Africa. Full profiles coming soon.
+          <p className="text-base leading-relaxed" style={{ color: "#6B7280", fontFamily: "'Inter', system-ui, sans-serif" }}>
+            CCMRE and CCISA draw on a wide network of academics, community leaders, chaplains,
+            and interfaith practitioners from across Kenya and Africa. Students from over 10 countries
+            enrolled in the MA in Islam and Christian-Muslim Relations form the practical backbone of
+            our dialogue and outreach work. To connect with the team, please{" "}
+            <a href="/contact" className="underline hover:no-underline" style={{ color: "var(--color-primary)" }}>contact us</a>.
           </p>
-          <div className="grid sm:grid-cols-3 gap-6">
-            {["Academic Advisor", "Community Liaison", "Research & Publications"].map((role) => (
-              <div
-                key={role}
-                className="p-6 rounded-2xl border-2 border-dashed flex flex-col items-center gap-3"
-                style={{ borderColor: "#E5E7EB" }}
-              >
-                <div
-                  className="w-16 h-16 rounded-full"
-                  style={{ backgroundColor: "#F3F4F6" }}
-                  aria-hidden="true"
-                />
-                <p
-                  className="text-sm font-medium"
-                  style={{ color: "#9CA3AF", fontFamily: "'Inter', system-ui, sans-serif" }}
-                >
-                  {role} — Profile coming soon
-                </p>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
     </div>
